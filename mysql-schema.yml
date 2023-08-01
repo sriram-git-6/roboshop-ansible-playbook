@@ -5,7 +5,7 @@
     enabled: yes
 
 - name: load schema
-  ansible.builtin.shell: "mysql-dev.devops746.online -uroot -pRoboShop@1 < /app/schema/{{component}}.sql"
+  ansible.builtin.shell: mysql-dev.devops746.online -uroot -pRoboShop@1 < /app/schema/{{component}}.sql
 
 # if  [ "${schema_type}" == "mysql" ]; then
 # echo -e "\e[36m >>>>>>>>>>>>>>>>Install mysql client<<<<<<<<<<<\e[0m" | tee -a ${log}
