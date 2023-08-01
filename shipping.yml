@@ -1,0 +1,27 @@
+- name: shipping setup
+  hosts: all
+  become: true
+  vars:
+    component: shipping
+    schema: true
+  tasks:
+    - name: shipping configuration
+      ansible.builtin.import_tasks: javaship.yml
+
+
+
+
+
+
+
+
+
+
+
+
+
+# component=shipping
+# source common.sh
+# schema_type=mysql
+
+# func_javaship

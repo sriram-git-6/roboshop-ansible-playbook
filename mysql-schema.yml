@@ -1,0 +1,17 @@
+- name: install mysql client
+  ansible.builtin.yum:
+    name: mysql
+    state: installed
+    enabled: yes
+
+- name: load schema
+  ansible.builtin.shell: mysql-dev.devops746.online -uroot -pRoboShop@1 < /app/schema/"{{component}}".sql
+
+# if  [ "${schema_type}" == "mysql" ]; then
+# echo -e "\e[36m >>>>>>>>>>>>>>>>Install mysql client<<<<<<<<<<<\e[0m" | tee -a ${log}
+# yum install mysql -y &>> ${log}
+# func_exit_status
+
+# echo -e "\e[36m >>>>>>>>>>>>>>>>Load schema<<<<<<<<<<<\e[0m" | tee -a ${log}
+# mysql -h mysql.devops746.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>> ${log}
+# func_exit_status

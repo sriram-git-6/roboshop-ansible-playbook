@@ -1,0 +1,49 @@
+- name: download and install nodejs repos
+  shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Install nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
+- name: pre-req setup
+  ansible.builtin.import_tasks: app-pre-req.yml
+
+- name: Install nodejs dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: setup-schema
+  ansible.builtin.import_tasks: mongo-schema.yml
+  when: schema is defined
+
+- name: setup-systemd
+  ansible.builtin.import_tasks: systemd-setup.yml
+
+
+# func_nodejs_cat_user_cart()
+
+    #  echo -e "\e[36m >>>>>>>>>>>>>>>>>> Create mongodb repofile <<<<<<<<<<<<<<<\e[0m" | tee -a ${log}
+    #  cp mongo-repofile /etc/yum.repos.d/mongo.repo &>> ${log}
+    #  func_exit_status
+
+
+    # echo -e "\e[36m >>>>>>>>>>>>>>>>>> Download and install nodejs repos <<<<<<<<<<<<<<<\e[0m" | tee -a ${log}
+    # curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>> ${log}
+    # func_exit_status
+
+    # echo -e "\e[36m >>>>>>>>>>>>>>>>>> Install nodejs <<<<<<<<<<<<<<<\e[0m" | tee -a ${log}
+    # yum install nodejs -y &>> ${log}
+    # func_exit_status
+
+    # func_prereq
+
+    # echo -e "\e[36m >>>>>>>>>>>>>>>>>> Install nodejs dependencies <<<<<<<<<<<<<<<\e[0m" | tee -a ${log}
+    # npm install &>> ${log}
+    # func_exit_status
+
+    # func_schema_setup
+
+    # func_systemd
+          

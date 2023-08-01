@@ -1,0 +1,32 @@
+- name: catalogue setup
+  hosts: all
+  become: true
+  vars:
+    component: catalogue
+    schema: true
+  tasks:
+    - name: nodejs setup
+      ansible.builtin.import_tasks: nodejs.yml
+
+
+
+
+
+#  component=catalogue
+#  schema_type=mongodb
+#  It loads everything from common.sh into catalogue.sh in run time ######
+#  source common.sh
+
+#  func_nodejs_cat_user_cart
+
+
+
+
+
+
+
+
+
+
+
+

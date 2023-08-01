@@ -1,0 +1,32 @@
+- name: mongodb setup
+  hosts: all
+  become: true
+  tasks:
+    - name: copy mongodb repo file
+      ansible.builtin.copy:
+        src: mongo-repofile
+        dest: /etc/yum.repos.d/mongo.repo
+
+    - name: install mongodb
+      ansible.builtin.yum:
+        name: mongodb-org
+        state: installed
+
+    - name: Replace listener IP address in mongod.conf file
+      ansible.builtin.replace:
+        path: /etc/mongod.conf
+        regexp: '127.0.0.0'
+        replace: '0.0.0.0'
+
+    - name: restart mongodb
+      ansible.builtin.systemd:
+        name: mongodb
+        state: restarted
+        enabled: yes
+
+# cp mongo-repofile /etc/yum.repos.d/mongo.repo
+# yum install mongodb-org -y
+# yum install mongodb-org -y
+# sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+# systemctl enable mongod
+# systemctl restart mongod
