@@ -1,5 +1,10 @@
+- name: copy mongodb repofile
+  ansible.builtin.copy:
+    src: mongo-repofile
+    dest: /etc/yum.repos.d/mongo.repo
+
 - name: download and install nodejs repos
-  shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
 - name: Install nodejs
   ansible.builtin.yum:
@@ -46,4 +51,4 @@
     # func_schema_setup
 
     # func_systemd
-          
+
