@@ -1,4 +1,4 @@
-- name: install mysql clientt
+- name: install mysql client
   ansible.builtin.yum:
     name: mysql
     state: installed
