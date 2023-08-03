@@ -2,7 +2,7 @@
   ansible.builtin.yum:
     name: maven
     state: installed
-    enabled: yes
+    update_cache: yes
 
 - name: app pre-requisies
   ansible.builtin.import_tasks: app-pre-req.yml
