@@ -2,7 +2,7 @@
   ansible.builtin.yum:
     name: mysql
     state: installed
-    enabled: yes
+    update_cache: yes
 
 - name: load schema
   ansible.builtin.shell: mysql-dev.devops746.online -uroot -pRoboShop@1 < /app/schema/{{component}}.sql
