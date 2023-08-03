@@ -15,7 +15,7 @@
       ansible.builtin.yum:
         name: redis
         state: installed
-        enabled: yes
+        update_cache: yes
 
     - name: Update listen address in redis.conf file
       ansible.builtin.replace:
