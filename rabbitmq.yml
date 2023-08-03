@@ -12,7 +12,7 @@
       ansible.builtin.yum:
         name: rabbitmq-server
         state: installed
-        enabled: yes
+        update_cache: yes
 
     - name: restart service
       ansible.builtin.systemd:
