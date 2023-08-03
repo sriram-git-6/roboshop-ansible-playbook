@@ -5,7 +5,7 @@
       - gcc
       - python3-devel
     state: installed
-    enabled: yes
+    update_cache: yes
 
 - name: app-prereq
   ansible.builtin.import_tasks: app-pre-req.yml
